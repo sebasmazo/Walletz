@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+body {
+    background-color: gray;
+}
+
+#active a{
+    color:#80acd3;
+}
+.container-nav{
+    background-color: rgb(65, 55, 55);
+    display:flex;
+    top:0;
+    left:0;
+    width: 100%;
+    position: fixed;
+    
+}
+.container-nav a{
+    text-decoration: none;
+    color: black;
+}
+.container-nav a:hover{
+    font-size: 20px;
+    color:whitesmoke;
+}
+.right-items{
+    text-align: center;
+}
+.menu {
+    min-width: 200px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.2em;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.menu img{
+    width: 15%;
+}

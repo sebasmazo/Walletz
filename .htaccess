@@ -1,0 +1,13 @@
+ErrorDocument 403 /Walletz/errorhandling.php
+ErrorDocument 404 /Walletz/errorhandling.php
+ErrorDocument 405 /Walletz/errorhandling.php
+ErrorDocument 408 /Walletz/errorhandling.php
+ErrorDocument 500 /Walletz/errorhandling.php
+ErrorDocument 502 /Walletz/errorhandling.php
+ErrorDocument 504 /Walletz/errorhandling.php
+
+#prevenir acceso a los archivos .htaccess
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
