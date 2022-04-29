@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 body {
     background-color: gray;
+    margin-top:6%;
 }
 
 #active a{
     color:#80acd3;
 }
+#right-item{
+    margin-left: auto;
+    margin-right: 0;
+}
+
 .container-nav{
     background-color: rgb(65, 55, 55);
     display:flex;
+    flex-wrap: wrap;
     top:0;
     left:0;
     width: 100%;
@@ -23,9 +31,7 @@ body {
     font-size: 20px;
     color:whitesmoke;
 }
-.right-items{
-    text-align: center;
-}
+
 .menu {
     min-width: 200px;
     color: whitesmoke;
@@ -36,4 +42,13 @@ body {
 }
 .menu img{
     width: 15%;
+}
+@media (max-width: 800px) {
+    .container-nav {
+        flex-direction: column;
+    }
+
+    #right-item {
+        margin-right: auto;
+    }
 }
