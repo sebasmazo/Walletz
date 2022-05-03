@@ -23,7 +23,7 @@
                         if(logged() == true){
                             echo("<p>Bienvenido, <a href='profile.php'>".SESSION["username"] . "</a></p>");
                         }else{
-                            echo("<a href='auth.php'>Iniciar sesión</a>");
+                            echo("<a href='register.php'>Iniciar sesión</a>");
                         }
                     ?>
                 </div>
