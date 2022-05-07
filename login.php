@@ -3,22 +3,44 @@
 
     /* A try catch block. It is used to catch exceptions. */
     try {
-        if($_SESSION['logged'] == "true"){
-            $nombre = $correo = $contraseña = "";
-            /* Checking if the request method sent by the server is POST. */
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $nombre = $_POST['fname'];
-                $correo = $_POST['email'];
-                $usr_password = $_POST['contraseña'];
-                if($sentencia = $conn->prepare("SELECT * FROM usuarios WHERE Correo = ?")){
+            if(isset($_SESSION['logged'])){
+                header("Location:index.php");
+                die();
+            }else{
+                $nombre = $correo = $contraseña = $nombre_consulta = $correo_consulta = $contraseña_consulta="";
+                /* Checking if the request method sent by the server is POST. */
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['contraseña'])){
+                    $correo = $_POST['email'];
+                    $contraseña = $_POST['contraseña'];
+                    if($sentencia = $conn->prepare("SELECT Nombre, Correo, Contraseña FROM usuarios WHERE Correo = ?")){
+                        $sentencia->bind_param('s',$correo);
+                        if($sentencia->execute()){
+                            $sentencia->bind_result($nombre_consulta,$correo_consulta,$contraseña_consulta);
+                            $sentencia->fetch();
+                            if(password_verify($contraseña , $contraseña_consulta)){
+                                
+                                session_start();
+                                $_SESSION['username'] = $nombre_consulta;
+                                $_SESSION['correo'] = $correo_consulta;
+                                $_SESSION['logged'] = "true";
+                                $sentencia->close();
+                                echo '<script language="javascript">alert("Bienvenido, '. $_SESSION['username'] .'");</script>'; 
+                                echo '<script language="javascript">window.location.href="index.php";</script>';
+                                
+                            }else{
+                                echo '<script language="javascript">alert("Contraseña incorrecta");</script>'; 
+                            }
+                        }else{
+                            throw new Exception("Error ejecutando la sentencia SELECT");
+                        }
 
+                    }else{
+                        throw new Exception("Fallo preparando la sentencia SELECT");
+                    }
                 }
             }
-        }else{
-            echo '<script language="javascript">alert("Ya tiene una sesión activa");</script>'; 
-            header("Location:index.php");
-            die();
-        }
+            
+        
         
     } catch (Exception $e) {
         echo '<script language="javascript">alert("'. $e->getMessage() .'");</script>'; 
@@ -40,7 +62,7 @@
         <h3>Iniciar sesión</h3>
     </div>
     <div class="form-container">
-        <form class="form-register"  action="register.php" method="post" >
+        <form class="form-register"  action="login.php" method="post" >
             <!--The form that the user will fill to register. */ -->
             <div class="input-register">
                 <label for="email"><p>Correo</p></label>
@@ -50,7 +72,7 @@
                 <input type="submit" id="btn_submit">
             </div>
             <div class="container-signin">
-                <p>Ya está registrado? <a id="a_reg" href="login.html">Iniciar sesión</a></p>
+                <p>No tiene cuenta? <a id="a_reg" href="register.php">Registrarse</a></p>
                 <p><a id="a_reg" href="index.php">Volver</a></p>
             </div>
         </form>

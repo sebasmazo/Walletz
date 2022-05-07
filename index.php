@@ -1,5 +1,5 @@
-<?php
-    require "functions.php";
+<?php 
+    session_start();
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -16,12 +16,12 @@
         <div class="navbar">
             <div class="container-nav">
                 <div class="menu" id="active"><a href="index.php">Inicio</a></div>
-                <div class="menu"><a href="search.php">Reseñas</a></div>
+                <div class="menu"><a href="reviews.php">Reseñas</a></div>
                 <div class="menu"><a href="#">Perfil</a></div>
                 <div class="menu" id="right-item">
                     <?php 
-                        if(logged() == true){
-                            echo("<p>Bienvenido, <a href='profile.php'>". $_SESSION["username"] . "</a></p>");
+                        if(isset($_SESSION['logged'])){
+                            echo(" <a href='close.php'>Bienvenido, ". $_SESSION["username"] . "</a>");
                         }else{
                             echo("<a href='login.php'>Iniciar sesión /</a><a href='register.php'> Registrarse</a>");
                         }

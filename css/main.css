@@ -86,6 +86,10 @@ body {
 .form-register{
     padding:16px;
 }
+.review-container{
+    background-image: url("./imgs/bitcoin-background.jpg");
+    width: 100%;
+}
 @media (max-width: 800px) {
     .container-nav {
         flex-direction: column;

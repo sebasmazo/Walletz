@@ -70,7 +70,7 @@
                 <input type="submit" id="btn_submit">
             </div>
             <div class="container-signin">
-                <p>Ya está registrado? <a id="a_reg" href="login.html">Iniciar sesión</a></p>
+                <p>Ya está registrado? <a id="a_reg" href="login.php">Iniciar sesión</a></p>
                 <p><a id="a_reg" href="index.php">Volver</a></p>
             </div>
         </form>
