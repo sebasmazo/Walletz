@@ -1,17 +1,25 @@
 <?php 
     require "dbConn.php"; //conn es la instancia mysqli
     $nombre = $correo = $usr_password = "";
-    $error="";
-    $consultas = [
-        "consulta_select_user" =>"SELECT id FROM Usuarios WHERE Correo = ?",
-        "consulta_insert_user" =>"INSERT INTO Usuarios (Nombre,Correo,Contrasena) VALUES (?,?,?)" 
+    
+    
+    /*INSERT INTO Usuarios (Nombre,Correo,Contraseña) VALUES (?,?,?)"*/
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contraseña'])){
+        $nombre = $_POST['fname'];
+        $correo = $_POST['email'];
+        $usr_password = $_POST['contraseña']; //Hacer un password_hash
+        /* Checking if the email is already in the database. */
+        $sentencia = $conn -> prepare("SELECT Id_User FROM usuarios WHERE Correo = ?");
+        $sentencia->bind_param('s',$correo);
+        $sentencia->execute();
+        $sentencia->store_result(); 
+        if($sentencia->num_rows() == 0){ //Correo no existe
+            //TODO agregar usuario
+            $usr_password = password_hash($usr_password, PASSWORD_DEFAULT);
 
-    ];
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $nombre = $_POST['nombre'];
-        $correo = $_POST['correo'];
-        $usr_password = $_POST['contraseña'];
-
+        }else{
+            echo '<script language="javascript">alert("Correo ya existe");</script>';
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -39,7 +47,7 @@
                 <label for="email"><p>Correo</p></label>
                 <input type="email" id="email" name="email" placeholder="Correo" required><br>
                 <label for="password"><p>Contraseña</p></label>
-                <input type="password" id="password" name="contraseña" placeholder="Contraseña" required><br>
+                <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required><br>
                 <input type="submit" id="btn_submit">
             </div>
             <div class="container-signin">
