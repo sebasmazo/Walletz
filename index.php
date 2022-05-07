@@ -21,9 +21,9 @@
                 <div class="menu" id="right-item">
                     <?php 
                         if(logged() == true){
-                            echo("<p>Bienvenido, <a href='profile.php'>".SESSION["username"] . "</a></p>");
+                            echo("<p>Bienvenido, <a href='profile.php'>". $_SESSION["username"] . "</a></p>");
                         }else{
-                            echo("<a href='register.php'>Iniciar sesión</a>");
+                            echo("<a href='login.php'>Iniciar sesión /</a><a href='register.php'> Registrarse</a>");
                         }
                     ?>
                 </div>
