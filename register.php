@@ -1,26 +1,45 @@
 <?php 
     require "dbConn.php"; //conn es la instancia mysqli
-    $nombre = $correo = $usr_password = "";
+    try{
+        $nombre = $correo = $usr_password = "";
     
-    
-    /*INSERT INTO Usuarios (Nombre,Correo,Contraseña) VALUES (?,?,?)"*/
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contraseña'])){
-        $nombre = $_POST['fname'];
-        $correo = $_POST['email'];
-        $usr_password = $_POST['contraseña']; //Hacer un password_hash
-        /* Checking if the email is already in the database. */
-        $sentencia = $conn -> prepare("SELECT Id_User FROM usuarios WHERE Correo = ?");
-        $sentencia->bind_param('s',$correo);
-        $sentencia->execute();
-        $sentencia->store_result(); 
-        if($sentencia->num_rows() == 0){ //Correo no existe
-            //TODO agregar usuario
-            $usr_password = password_hash($usr_password, PASSWORD_DEFAULT);
-
-        }else{
-            echo '<script language="javascript">alert("Correo ya existe");</script>';
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contraseña'])){
+            $nombre = $_POST['fname'];
+            $correo = $_POST['email'];
+            $usr_password = $_POST['contraseña']; //Hacer un password_hash
+            /* Checking if the email is already in the database. */
+            if($sentencia = $conn -> prepare("SELECT Id_User FROM usuarios WHERE Correo = ?")){
+                $sentencia->bind_param('s',$correo);
+                $sentencia->execute();
+                $sentencia->store_result(); 
+                if($sentencia->num_rows() == 0){ //Correo no existe
+                    //TODO agregar usuario
+                    $sentencia->close();
+                    $usr_password = password_hash($usr_password, PASSWORD_DEFAULT);
+                    if($sentencia = $conn -> prepare("INSERT INTO Usuarios (Nombre,Correo,Contraseña) VALUES (?,?,?)")){
+                        $sentencia->bind_param('sss',$nombre,$correo,$usr_password);
+                        if($sentencia->execute()){
+                            echo '<script language="javascript">alert("Usuario registrado correctamente");</script>'; 
+                            echo '<script language="javascript">window.location.href="index.php";</script>';
+                        }else{
+                            throw new Exception("execute de insert ha fallado");
+                        }
+                    }else{
+                        throw new Exception("Preparación de sentencia INSERT ha fallado");
+                    }
+                }else{
+                    echo '<script language="javascript">alert("Correo ya existe");</script>';
+                }
+            }else{
+                throw new Exception("Preparación de sentencia SELECT ha fallado");
+            }
+            
         }
+    }/* Catching any exception that may occur and displaying it in an alert. */
+    catch(Exception $e){
+        echo '<script language="javascript">alert("'. $e->getMessage() .'");</script>'; 
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
