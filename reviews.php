@@ -14,8 +14,8 @@
 <header>
         <div class="navbar">
             <div class="container-nav">
-                <div class="menu" id="active"><a href="index.php">Inicio</a></div>
-                <div class="menu"><a href="search.php">Reseñas</a></div>
+                <div class="menu" ><a href="index.php">Inicio</a></div>
+                <div class="menu" id="active><a href="reviews.php">Reseñas</a></div>
                 <div class="menu"><a href="#">Perfil</a></div>
                 <div class="menu" id="right-item">
                     <?php 
@@ -30,9 +30,49 @@
         </div>
 </header>
 <body>
-    <div class="review-container">
-        <p>Hola</p>
+    <h1 id="body-title">Reseñas</h1>
+    <div class="review-browser">
+        <div class="review-container">
+            <div class="review-wallet">
+                <h3>0x129419248f124914919</h3>
+                    
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus itaque commodi possimus natus at perspiciatis, dolore ut iure reprehenderit expedita recusandae laborum sapiente odit veritatis consequuntur minima quo repudiandae!</p>                
+            </div>
+            <div class="review-info"><!-- Username && timestamps !-->
+                <p>Hecha por: <!-- Username con PHP!--></p>    
+                <p><!-- timestamp con PHP!--></p>   
+            </div>
+                
+        </div>
+        <div class="review-container">
+            <div class="review-title">
+                <h3></h3>    
+            </div>
+            <div class="review-content">
+                <p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+            </div>
+            <div class="review-info"> <!-- Username && timestamps !-->
+                <p>Hecha por: <!-- Username con PHP!--></p>    
+                <p><!-- timestamp con PHP!--></p>   
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="review-title">
+                <h3></h3>
+            </div>
+            <div class="review-content">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur praesentium iste sint, in exercitationem et blanditiis fuga obcaecati. Nobis rem cumque iusto distinctio sed ad eligendi dolorem culpa est!</p>
+
+            </div>
+            <div class="review-info"> <!-- Username && timestamps !-->
+                <p>Hecha por: <!-- Username con PHP!--></p>    
+                <p><!-- timestamp con PHP!--></p>   
+            </div>
+        </div>
     </div>
+    
     
 </body>
 </html>

@@ -20,7 +20,7 @@
                         $sentencia->bind_param('sss',$nombre,$correo,$usr_password);
                         if($sentencia->execute()){
                             echo '<script language="javascript">alert("Usuario registrado correctamente");</script>'; 
-                            echo '<script language="javascript">window.location.href="index.php";</script>';
+                            echo '<script language="javascript">window.location.href="login.php";</script>';
                         }else{
                             throw new Exception("execute de insert ha fallado");
                         }

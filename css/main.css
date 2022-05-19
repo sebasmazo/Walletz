@@ -11,8 +11,8 @@ body {
 }
 #right-item{
     margin-left:50%;
-    
 }
+
 
 .container-nav{
     background-color: rgb(65, 55, 55);
@@ -43,6 +43,7 @@ body {
 #item2.flex-item{
     max-width: 50%;
     align-self: center;
+    
 }
 .menu {
     min-width: 200px;
@@ -65,6 +66,10 @@ body {
 .title-register{
     color: rgb(182, 55, 55);
 }
+#body-title{
+    margin:auto;
+    text-align: center;
+}
 .container-register{
   
     box-shadow: grey;
@@ -86,17 +91,38 @@ body {
 .form-register{
     padding:16px;
 }
-.review-container{
+.review-browser{
     background-image: url("../imgs/bitcoin-background.jpg");
     margin:auto;
-    width: 70%;
+    width: 90%;
+    padding:2px;
+}
+.review-container{
+    
+    background-color: rgb(235, 208, 208);
+    margin:auto;
+    width: 80%;
+    
+}
+.copyright{
+    text-align:center;
+    color:#434849;
 }
 @media (max-width: 800px) {
+    #item2.flex-item{
+        max-width: 50%;
+        align-self: center;
+        padding:7%;
+    }
+    header{
+        margin:2%;
+        padding:15%;
+    }
     .container-nav {
         flex-direction: column;
     }
 
     #right-item {
-        margin-right: auto;
+        margin: auto;
     }
 }
