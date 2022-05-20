@@ -1,5 +1,10 @@
 <?php 
+    require 'admin/dbConn.php';
+    require 'admin/methods.php';
     session_start();
+    if(!isset($_SESSION['username'])){
+        header("Location:login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +35,27 @@
         </div>
 </header>
 <body>
-    <
+    <div class="container-profile">
+        <h1><?php echo($_SESSION['username']); ?></h1>
+        <p>Usuario desde: <?php echo($_SESSION['fecha'])?></p>
+        <h3>Reseñas publicadas</h3>
+    </div>
     
+    <div class="review-browser">
+        <?php 
+                /* A query to the database, it is selecting the ID_User, fecha_creada, Wallet, Reseña FROM
+                reseñas. */
+                $query = "SELECT ID_User, fecha_creada, Wallet, Reseña FROM reseñas WHERE ID_User =".$_SESSION['id'];
+                $reviews = mysqli_query($conn, $query);
+                if(mysqli_num_rows($reviews)>0){
+                    while ($row = mysqli_fetch_array($reviews)) {
+                        echo "<div class='review-container'><div class='review-wallet'><h3>".$row['Wallet']."</h3></div><div class='review-content'><p>" .$row['Reseña']."</p></div><div class='review-info'><p>Hecha por: ".toUser($row['ID_User'],$conn)."</p><p>".$row['fecha_creada']."</p></div></div>";
+                    }
+                }else{
+                    echo '<div class="err_reviews">No hay reseñas. !Agrega la primera!</div>';
+                }
+        ?>
+                        
+    </div>
 </body>
 </html>

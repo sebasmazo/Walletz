@@ -8,15 +8,15 @@
                 header("Location:index.php");
                 die();
             }else{
-                $nombre = $correo = $contraseña = $nombre_consulta = $correo_consulta = $contraseña_consulta= $id ="";
+                $nombre = $correo = $contraseña = $nombre_consulta = $correo_consulta = $contraseña_consulta= $id = $fecha="";
                 /* Checking if the request method sent by the server is POST. */
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['contraseña'])){
                     $correo = $_POST['email'];
                     $contraseña = $_POST['contraseña'];
-                    if($sentencia = $conn->prepare("SELECT ID_User, Nombre, Correo, Contraseña FROM usuarios WHERE Correo = ?")){
+                    if($sentencia = $conn->prepare("SELECT ID_User, fecha_creada, Nombre, Correo, Contraseña FROM usuarios WHERE Correo = ?")){
                         $sentencia->bind_param('s',$correo);
                         if($sentencia->execute()){
-                            $sentencia->bind_result($id,$nombre_consulta,$correo_consulta,$contraseña_consulta);
+                            $sentencia->bind_result($id,$fecha,$nombre_consulta,$correo_consulta,$contraseña_consulta);
                             $sentencia->fetch();
                             if(password_verify($contraseña , $contraseña_consulta)){
                                 
@@ -25,8 +25,9 @@
                                 $_SESSION['username'] = $nombre_consulta;
                                 $_SESSION['correo'] = $correo_consulta;
                                 $_SESSION['logged'] = "true";
+                                $_SESSION['fecha'] = $fecha;
+
                                 $sentencia->close();
-                                echo '<script language="javascript">alert("Bienvenido, '. $_SESSION['username'] .'");</script>'; 
                                 echo '<script language="javascript">window.location.href="index.php";</script>';
                                 
                             }else{

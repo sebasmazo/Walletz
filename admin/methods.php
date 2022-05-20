@@ -12,8 +12,10 @@ function toUser($user, $conn) { /* Convierte el ID de un usario al nombre */
     $sentencia->fetch();
     return $nombre;
 }
-function displayReviews($key){
+function displayReviews($key,$conn){
     //Query para mostrar una reseña con la $key (Wallet) como parametro
+    $query = "SELECT ID_User, fecha_creada, Wallet, Reseña FROM reseñas WHERE Wallet='".$key."'";
+    return mysqli_query($conn,$query);
 }
 ?>
 
