@@ -17,7 +17,7 @@
             <div class="container-nav">
                 <div class="menu" id="active"><a href="index.php">Inicio</a></div>
                 <div class="menu"><a href="reviews.php">Reseñas</a></div>
-                <div class="menu"><a href="#">Perfil</a></div>
+                <div class="menu"><a href="profile.php">Perfil</a></div>
                 <div class="menu" id="right-item">
                     <?php 
                         if(isset($_SESSION['logged'])){
