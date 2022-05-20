@@ -1,0 +1,3 @@
+Allow from None
+Order allow,deny
+ErrorDocument 403 /Walletz/errorhandling.php

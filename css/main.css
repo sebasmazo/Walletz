@@ -1,0 +1,178 @@
+
+body {
+    background-color: gray;
+    margin-top:6%;
+    
+}
+
+
+#active a{
+    color:#80acd3;
+}
+#right-item{
+    margin-left:50%;
+}
+
+
+.container-nav{
+    background-color: rgb(65, 55, 55);
+    display:flex;
+    flex-wrap: wrap;
+    top:0;
+    left:0;
+    width: 100%;
+    position: fixed;
+    
+}
+.container-nav a{
+    text-decoration: none;
+    color: black;
+}
+.container-nav a:hover{
+    font-size: 20px;
+    color:whitesmoke;
+}
+.flex-item #logo1{
+    width: 70%;
+    left: 0;
+}
+#item1.flex-item{
+    max-width:20%;
+    text-align: center;
+}
+#item2.flex-item{
+    max-width: 50%;
+    align-self: center;
+    
+}
+.menu {
+    min-width: 200px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.2em;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.menu img{
+    width: 15%;
+}
+.flex-item{
+    flex: auto;
+}
+.container-info {
+    display: flex;
+    flex-direction: row;
+}
+.title-register{
+    color: rgb(182, 55, 55);
+}
+#body-title{
+    margin:auto;
+    text-align: center;
+}
+.container-register{
+  
+    box-shadow: grey;
+    background-color: #434849;
+    color:#000000;
+    border-radius: 5%;
+    margin: auto;
+    margin-top:5%;
+    text-align:center;
+    width: 40%;
+    padding: 1%;
+}
+#a_reg{
+    color:beige;
+}
+#btn_submit{
+    margin: 28px;
+}
+.form-register{
+    padding:16px;
+}
+.review-browser{
+    background-image: url("../imgs/bitcoin-background.jpg");
+    margin:auto;
+    width: 90%;
+    padding:2px;
+}
+.review-container{
+    
+    background-color: rgb(235, 208, 208);
+    margin:auto;
+    width: 80%;
+    
+}
+.err_reviews{
+    text-align:center;
+}
+
+.copyright{
+    text-align:center;
+    color:#434849;
+}
+.btn-flotante {
+    font-size: 16px; /* Cambiar el tamaño de la tipografia */
+    text-transform: uppercase; /* Texto en mayusculas */
+    font-weight: bold; /* Fuente en negrita o bold */
+    color: #ffffff; /* Color del texto */
+    border-radius: 5px; /* Borde del boton */
+    letter-spacing: 2px; /* Espacio entre letras */
+    background-color: #E91E63; /* Color de fondo */
+    padding: 18px 30px; /* Relleno del boton */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    transition: all 300ms ease 0ms;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    
+    }
+    a{
+        text-decoration: none;
+    }
+    .btn-flotante:hover {
+    background-color: #2c2fa5; /* Color de fondo al pasar el cursor */
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-7px);
+    }
+    @media only screen and (max-width: 600px) {
+    .btn-flotante {
+    font-size: 14px;
+    padding: 12px 20px;
+    bottom: 20px;
+    right: 20px;
+    }
+    }
+.container-profile{
+    text-align: center;
+}
+.btn-flotante#search{
+    margin-bottom: 5%;
+}
+
+
+
+
+
+
+
+@media (max-width: 800px) {
+    #item2.flex-item{
+        max-width: 50%;
+        align-self: center;
+        padding:7%;
+    }
+    header{
+        margin:2%;
+        padding:15%;
+    }
+    .container-nav {
+        flex-direction: column;
+    }
+
+    #right-item {
+        margin: auto;
+    }
+}
