@@ -1,5 +1,7 @@
 <?php 
     session_start();
+    require 'admin/dbConn.php'; //Variable de conexión: conn 
+    require 'admin/methods.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,47 +34,21 @@
 <body>
     <h1 id="body-title">Reseñas</h1>
     <div class="review-browser">
-        <div class="review-container">
-            <div class="review-wallet">
-                <h3>0x129419248f124914919</h3>
-                    
-            </div>
-            <div class="review-content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus itaque commodi possimus natus at perspiciatis, dolore ut iure reprehenderit expedita recusandae laborum sapiente odit veritatis consequuntur minima quo repudiandae!</p>                
-            </div>
-            <div class="review-info"><!-- Username && timestamps !-->
-                <p>Hecha por: <!-- Username con PHP!--></p>    
-                <p><!-- timestamp con PHP!--></p>   
-            </div>
-                
-        </div>
-        <div class="review-container">
-            <div class="review-title">
-                <h3></h3>    
-            </div>
-            <div class="review-content">
-                <p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            </div>
-            <div class="review-info"> <!-- Username && timestamps !-->
-                <p>Hecha por: <!-- Username con PHP!--></p>    
-                <p><!-- timestamp con PHP!--></p>   
-            </div>
-        </div>
-        <div class="review-container">
-            <div class="review-title">
-                <h3></h3>
-            </div>
-            <div class="review-content">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur praesentium iste sint, in exercitationem et blanditiis fuga obcaecati. Nobis rem cumque iusto distinctio sed ad eligendi dolorem culpa est!</p>
-
-            </div>
-            <div class="review-info"> <!-- Username && timestamps !-->
-                <p>Hecha por: <!-- Username con PHP!--></p>    
-                <p><!-- timestamp con PHP!--></p>   
-            </div>
-        </div>
+        <?php 
+            /* A query to the database, it is selecting the ID_User, fecha_creada, Wallet, Reseña FROM
+            reseñas. */
+            $query = "SELECT ID_User, fecha_creada, Wallet, Reseña FROM reseñas";
+            $reviews = mysqli_query($conn, $query);
+            if(mysqli_num_rows($reviews)>0){
+                while ($row = mysqli_fetch_array($reviews)) {
+                    echo "<div class='review-container'><div class='review-wallet'><h3>".$row['Wallet']."</h3></div><div class='review-content'><p>" .$row['Reseña']."</p></div><div class='review-info'><p>Hecha por: ".toUser($row['ID_User'],$conn)."</p><p>".$row['fecha_creada']."</p></div></div>";
+                }
+            }else{
+                echo '<div class="err_reviews">No hay reseñas. !Agrega la primera!</div>';
+            }
+        ?>
     </div>
-    
+    <div class="create_review"></div>    
     
 </body>
 </html>

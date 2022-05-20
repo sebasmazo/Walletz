@@ -4,7 +4,7 @@
 // Creating an array of error codes and their corresponding messages.
 $status = $_SERVER['REDIRECT_STATUS'];
 $codes = array(
-    403 => array('403', 'Petición rechazada por el servidor.'),
+    403 => array('403', 'Petición rechazada por el servidor. Tal vez no tienes permiso para entrar acá!'),
     404 => array('404', 'Pagina no encontrada'),
     405 => array('405', 'Metodo no permitido'),
     408 => array('408', 'Petición sin respuesta'),

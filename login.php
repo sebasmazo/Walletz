@@ -1,5 +1,5 @@
 <?php 
-    require "dbConn.php"; //conn es la instancia mysqli
+    require "admin/dbConn.php"; //conn es la instancia mysqli
 
     /* A try catch block. It is used to catch exceptions. */
     try {

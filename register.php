@@ -1,5 +1,5 @@
 <?php 
-    require "dbConn.php"; //conn es la instancia mysqli
+    require "admin/dbConn.php"; //conn es la instancia mysqli
     try{
         $nombre = $correo = $usr_password = "";
     
