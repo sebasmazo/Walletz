@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require "admin/dbConn.php"; //conn es la instancia mysqli
 
     /* A try catch block. It is used to catch exceptions. */
@@ -7,19 +8,20 @@
                 header("Location:index.php");
                 die();
             }else{
-                $nombre = $correo = $contraseña = $nombre_consulta = $correo_consulta = $contraseña_consulta="";
+                $nombre = $correo = $contraseña = $nombre_consulta = $correo_consulta = $contraseña_consulta= $id ="";
                 /* Checking if the request method sent by the server is POST. */
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['contraseña'])){
                     $correo = $_POST['email'];
                     $contraseña = $_POST['contraseña'];
-                    if($sentencia = $conn->prepare("SELECT Nombre, Correo, Contraseña FROM usuarios WHERE Correo = ?")){
+                    if($sentencia = $conn->prepare("SELECT ID_User, Nombre, Correo, Contraseña FROM usuarios WHERE Correo = ?")){
                         $sentencia->bind_param('s',$correo);
                         if($sentencia->execute()){
-                            $sentencia->bind_result($nombre_consulta,$correo_consulta,$contraseña_consulta);
+                            $sentencia->bind_result($id,$nombre_consulta,$correo_consulta,$contraseña_consulta);
                             $sentencia->fetch();
                             if(password_verify($contraseña , $contraseña_consulta)){
                                 
                                 session_start();
+                                $_SESSION['id'] = $id;
                                 $_SESSION['username'] = $nombre_consulta;
                                 $_SESSION['correo'] = $correo_consulta;
                                 $_SESSION['logged'] = "true";

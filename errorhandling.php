@@ -20,7 +20,7 @@ if ($title == false || strlen($status) != 3) {
 }
 // Display error message in HTML with echo
 echo 
-'<div style="display:flex;"><img src="imgs/LogoWalletz-sinfondo.png"><div> <h1> Oops! Encontramos un error '.$title.'</h1>
+'<div style="display:flex;"><div> <h1> Oops! Encontramos un error '.$title.'</h1>
 <p>'.$message.'</p></div></div>';
 
 ?>

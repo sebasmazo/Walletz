@@ -35,20 +35,26 @@
     <h1 id="body-title">Reseñas</h1>
     <div class="review-browser">
         <?php 
-            /* A query to the database, it is selecting the ID_User, fecha_creada, Wallet, Reseña FROM
-            reseñas. */
-            $query = "SELECT ID_User, fecha_creada, Wallet, Reseña FROM reseñas";
-            $reviews = mysqli_query($conn, $query);
-            if(mysqli_num_rows($reviews)>0){
-                while ($row = mysqli_fetch_array($reviews)) {
-                    echo "<div class='review-container'><div class='review-wallet'><h3>".$row['Wallet']."</h3></div><div class='review-content'><p>" .$row['Reseña']."</p></div><div class='review-info'><p>Hecha por: ".toUser($row['ID_User'],$conn)."</p><p>".$row['fecha_creada']."</p></div></div>";
-                }
-            }else{
-                echo '<div class="err_reviews">No hay reseñas. !Agrega la primera!</div>';
+            if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['key'])){
+                $reviews = displayReviews($_GET['key']); //Llama a metodo que retorne las reviews con la key entregada como parametro
             }
+            else{
+                /* A query to the database, it is selecting the ID_User, fecha_creada, Wallet, Reseña FROM
+                reseñas. */
+                $query = "SELECT ID_User, fecha_creada, Wallet, Reseña FROM reseñas";
+                $reviews = mysqli_query($conn, $query);
+                if(mysqli_num_rows($reviews)>0){
+                    while ($row = mysqli_fetch_array($reviews)) {
+                        echo "<div class='review-container'><div class='review-wallet'><h3>".$row['Wallet']."</h3></div><div class='review-content'><p>" .$row['Reseña']."</p></div><div class='review-info'><p>Hecha por: ".toUser($row['ID_User'],$conn)."</p><p>".$row['fecha_creada']."</p></div></div>";
+                    }
+                }else{
+                    echo '<div class="err_reviews">No hay reseñas. !Agrega la primera!</div>';
+                }
+            }
+            
         ?>
     </div>
-    <div class="create_review"></div>    
+    <a href="create.php" class="btn-flotante">Crear reseña</a>  
     
 </body>
 </html>

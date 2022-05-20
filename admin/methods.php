@@ -12,6 +12,9 @@ function toUser($user, $conn) { /* Convierte el ID de un usario al nombre */
     $sentencia->fetch();
     return $nombre;
 }
+function displayReviews($key){
+    //Query para mostrar una reseña con la $key (Wallet) como parametro
+}
 ?>
 
 
