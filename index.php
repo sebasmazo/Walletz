@@ -41,8 +41,8 @@
     </header>
     <body>
         <div class="container-info">
-                        <div class="flex-item" id="item1"><h1>Walletz</h1><img id="logo1" src="imgs/LogoWalletz-sinfondo.png"></div>
-                        <div class="flex-item" id="item2"><p>Bienvenido a tu foro de confianza! Disfruta de una comunidad unida para asegurar la confianza que necesitas en tus inversiones</p></div>
+                        <div class="flex-item" id="item1"><h1 id="index">Walletz</h1><img id="logo1" src="imgs/LogoWalletz-sinfondo.png"></div>
+                        <div class="flex-item" id="item2"><p id="index">Bienvenido a tu foro de confianza! Disfruta de una comunidad unida para asegurar la confianza que necesitas en tus inversiones</p></div>
         </div>
         <div class="external-source">
             <iframe src="https://es.widgets.investing.com/top-cryptocurrencies?theme=darkTheme&cols=symbol,priceUsd,vol24,chg24" width="100%" height="480px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe><div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;">Cortesía de <a href="https://es.investing.com?utm_source=WMT&amp;utm_medium=referral&amp;utm_campaign=TOP_CRYPTOCURRENCIES&amp;utm_content=Footer%20Link" target="_blank" rel="nofollow">Investing.com</a></div>

@@ -1,8 +1,16 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,600&display=swap');
 body {
     background-color: gray;
     margin-top:6%;
     
+}
+h1#index{
+    font-family: 'Raleway', sans-serif;
+}
+p#index{
+    font-family: 'Akshar', sans-serif;
+    font-size:2rem;
 }
 
 
