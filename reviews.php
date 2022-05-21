@@ -23,7 +23,7 @@
                         echo('<div class="menu"><a href="profile.php">Perfil</a></div>');
                     }
                 ?> 
-                <div class="menu" id="right-item">
+                <div class="menu">
                     <?php 
                         if(isset($_SESSION['logged'])){
                             echo(" <a href='close.php'>Bienvenido, ". $_SESSION["username"] . "</a>");
@@ -74,8 +74,9 @@
         ?>
     </div>
     
-
-    <a href="create.php" class="btn-flotante">Crear reseña</a> 
+    <div class="btn-facha">
+        <a href="create.php">Crear reseña</a> 
+    </div>
     
     
 </body>

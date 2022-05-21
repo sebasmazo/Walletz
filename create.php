@@ -4,6 +4,24 @@
         header("Location:login.php");
         die();
     }
+    require 'admin/dbConn.php';
+    session_start();
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wallet']) && isset($_POST['review']) && isset($_SESSION['id'])){
+        $user = $_SESSION['id'];
+        $wallet = $_POST['wallet'];
+        $review = $_POST['review'];
+        $query = "INSERT INTO reseñas (ID_User, Wallet, Reseña) VALUES (?,?,?)";
+        $sentencia = $conn->prepare($query);
+        $sentencia->bind_param("iss",$user,$wallet,$review);
+        if($sentencia->execute()){
+            header("Location:reviews.php");
+        }else{
+            echo "Error";
+        }
+        
+    }else{
+        header("Location:login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +36,7 @@
 <body>
 <div class="container-register">
     <div class="form-container">
-        <form class="form-register"  action="create_handling.php" method="post" >
+        <form class="form-register"  action="create.php" method="post" >
             <!--The form that the user will fill to register. */ -->
             <div class="input-register">
                 <label for="wallet"><p>Wallet</p></label>

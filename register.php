@@ -16,7 +16,7 @@
                     //TODO agregar usuario
                     $sentencia->close();
                     $usr_password = password_hash($usr_password, PASSWORD_DEFAULT);
-                    if($sentencia = $conn -> prepare("INSERT INTO Usuarios (Nombre,Correo,Contraseña) VALUES (?,?,?)")){
+                    if($sentencia = $conn -> prepare("INSERT INTO usuarios (Nombre,Correo,Contraseña) VALUES (?,?,?)")){
                         $sentencia->bind_param('sss',$nombre,$correo,$usr_password);
                         if($sentencia->execute()){
                             echo '<script language="javascript">alert("Usuario registrado correctamente");</script>'; 

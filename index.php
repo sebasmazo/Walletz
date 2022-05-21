@@ -21,8 +21,13 @@
                     if(isset($_SESSION['logged'])){
                         echo('<div class="menu"><a href="profile.php">Perfil</a></div>');
                     }
+                ?> 
+                <?php 
+                    if(isset($_SESSION['logged'])){
+                        echo('');
+                    }
                 ?>    
-                <div class="menu" id="right-item">
+                <div class="menu" >
                     <?php 
                         if(isset($_SESSION['logged'])){
                             echo(" <a href='close.php'>Bienvenido, ". $_SESSION["username"] . "</a>");
@@ -37,7 +42,7 @@
     <body>
         <div class="container-info">
                         <div class="flex-item" id="item1"><h1>Walletz</h1><img id="logo1" src="imgs/LogoWalletz-sinfondo.png"></div>
-                        <div class="flex-item" id="item2"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla inventore vitae laborum reprehenderit, facilis deleniti dolorum magni voluptatum corporis corrupti, eos placeat? Modi perferendis magni adipisci itaque numquam. Labore, alias.</p></div>
+                        <div class="flex-item" id="item2"><p>Bienvenido a tu foro de confianza! Disfruta de una comunidad unida para asegurar la confianza que necesitas en tus inversiones</p></div>
         </div>
         <div class="external-source">
             <iframe src="https://es.widgets.investing.com/top-cryptocurrencies?theme=darkTheme&cols=symbol,priceUsd,vol24,chg24" width="100%" height="480px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe><div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;">Cortesía de <a href="https://es.investing.com?utm_source=WMT&amp;utm_medium=referral&amp;utm_campaign=TOP_CRYPTOCURRENCIES&amp;utm_content=Footer%20Link" target="_blank" rel="nofollow">Investing.com</a></div>
