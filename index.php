@@ -27,7 +27,7 @@
                         echo('');
                     }
                 ?>    
-                <div class="menu" id="right-item">
+                <div class="menu" >
                     <?php 
                         if(isset($_SESSION['logged'])){
                             echo(" <a href='close.php'>Bienvenido, ". $_SESSION["username"] . "</a>");

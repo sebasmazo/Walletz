@@ -19,7 +19,7 @@
                 <div class="menu" ><a href="index.php">Inicio</a></div>
                 <div class="menu" ><a href="reviews.php">Reseñas</a></div>
                 <div class="menu" id="active"><a href="profile.php">Perfil</a></div>
-                <div class="menu" id="right-item">
+                <div class="menu" >
                     <?php 
                         if(isset($_SESSION['logged'])){
                             echo(" <a href='close.php'>Bienvenido, ". $_SESSION["username"] . "</a>");
