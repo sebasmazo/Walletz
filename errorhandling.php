@@ -20,7 +20,27 @@ if ($title == false || strlen($status) != 3) {
 }
 // Display error message in HTML with echo
 echo 
-'<div style="display:flex;"><div> <h1> Oops! Encontramos un error '.$title.'</h1>
-<p>'.$message.'</p></div></div>';
+'';
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walletz</title>
+    <link rel="icon" type="image/x-icon" href="./imgs/LogoWalletz.ico">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <div style="display:flex;">
+        <object data="imgs/file0.svg" width="500" height="300"> </object>
+        <div> 
+            <h1 id="index"> Oops! Encontramos un error <?php echo $title ?></h1>
+            <p id="index"><?php echo $message ?></p>
+        </div>
+    </div>
+</body>
+</html>
